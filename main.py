@@ -10,12 +10,15 @@ from button_holder import ButtonHolder
 # Importing the RockWidget class
 from rock_widget import RockWidget
 
+# Importing the MainWindow class
+from main_window import MainWindow
+
 
 # This element is a wrapper for all application widgets and interections
 app = QApplication(sys.argv)
 
 # Creating the main window of the application
-window = RockWidget()
+window = MainWindow(app)
 
 # Showing the window because it's hidden by default
 window.show()
