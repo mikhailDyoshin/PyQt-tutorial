@@ -1,5 +1,6 @@
+from PySide6.QtGui import QAction, QIcon
 from PySide6.QtCore import QSize
-from PySide6.QtWidgets import QMainWindow, QToolBar
+from PySide6.QtWidgets import QMainWindow, QToolBar, QPushButton
 
 
 class MainWindow(QMainWindow):
@@ -40,16 +41,36 @@ class MainWindow(QMainWindow):
 
         """ Toolbar """
         # Creating toolbar
-        tool_bar = QToolBar("My main toolbar")
+        toolbar = QToolBar("My main toolbar")
         # Setting the size of icons in the toolbar
-        tool_bar.setIconSize(QSize(16, 16))
+        toolbar.setIconSize(QSize(16, 16))
         # Adding toolbar to the window-object
-        self.addToolBar(tool_bar)
+        self.addToolBar(toolbar)
 
         # Adding the quit action to the toolbar
-        tool_bar.addAction(quit_action)
+        toolbar.addAction(quit_action)
 
-    
+        # Creating another action
+        action1 = QAction("Some action", self)
+        action1.setStatusTip("Status message for some action")
+        action1.triggered.connect(self.toolbar_button_click)
+
+        # Creating another action with an icon
+        action2 = QAction(QIcon("./start.png"), "Some other action with an icon", self)
+        action2.setStatusTip("Status message from action with icon")
+        action2.triggered.connect(self.toolbar_icon_click)
+
+        # Adding an action to the toolbar
+        toolbar.addAction(action1)
+        toolbar.addAction(action2)
+
+        # Adding a separator to the toolbar
+        toolbar.addSeparator()
+
+        # Adding a button to to the toolbar
+        toolbar.addWidget(QPushButton("Push me"))
+
+
     def quit_app(self):
         """ 
             The method closes the app.
@@ -57,3 +78,10 @@ class MainWindow(QMainWindow):
             in the file-menu is triggered.
         """
         self.app.quit()
+
+    def toolbar_button_click(self):
+        print("Toolbar button clicked.")
+
+    def toolbar_icon_click(self):
+        print("Toolbar icon clicked.")
+        
