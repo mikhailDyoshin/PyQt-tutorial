@@ -1,6 +1,6 @@
 from PySide6.QtGui import QAction, QIcon
 from PySide6.QtCore import QSize
-from PySide6.QtWidgets import QMainWindow, QToolBar, QPushButton
+from PySide6.QtWidgets import QMainWindow, QToolBar, QPushButton, QStatusBar
 
 
 class MainWindow(QMainWindow):
@@ -70,7 +70,17 @@ class MainWindow(QMainWindow):
         # Adding a button to to the toolbar
         toolbar.addWidget(QPushButton("Push me"))
 
+        """ Status bar """
+        # Creating a status bar
+        self.setStatusBar(QStatusBar(self))
 
+        """ Central button """
+        button1 = QPushButton("Press me")
+        button1.clicked.connect(self.button1_clicked)
+        self.setCentralWidget(button1)
+
+
+    """ Methods """
     def quit_app(self):
         """ 
             The method closes the app.
@@ -80,8 +90,26 @@ class MainWindow(QMainWindow):
         self.app.quit()
 
     def toolbar_button_click(self):
-        print("Toolbar button clicked.")
+        """
+            The method sends a message 
+            to the status bar 
+            when toolbar button is clicked.
+            After 3 seconds the message disappears.
+        """
+        self.statusBar().showMessage("Toolbar button clicked.", 3000)
 
     def toolbar_icon_click(self):
-        print("Toolbar icon clicked.")
-        
+        """
+            The method sends a message 
+            to the status bar 
+            when toolbar icon is clicked.
+            After 3 seconds the message disappears.
+        """
+        self.statusBar().showMessage("Toolbar icon clicked.", 3000)
+
+    def button1_clicked(self):
+        """
+            The method prints a message into console
+            when central button is clicked.
+        """
+        print("Button1 clicked.")
