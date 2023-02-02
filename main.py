@@ -3,27 +3,14 @@ from PySide6.QtWidgets import QApplication
 
 #The sys module is responsible for processing commmand line arguments
 import sys
-""" 
-# Importing the ButtonHolder class
-from button_holder import ButtonHolder
 
-# Importing the RockWidget class
-from rock_widget import RockWidget
-
-# Importing the MainWindow class
-from main_window import MainWindow
-
-from widget import Widget
-"""
-
-from widget_push_buttons import WidgetPushButtons
-
+from widget_line_edit import WidgetLineEdit
 
 # This element is a wrapper for all application widgets and interections
 app = QApplication(sys.argv)
 
 # Creating the main window of the application
-window = WidgetPushButtons()
+window = WidgetLineEdit()
 
 # Showing the window because it's hidden by default
 window.show()
