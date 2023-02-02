@@ -44,7 +44,7 @@ class Widget(QWidget):
 
 
     """ Methods """
-    # This is a hard way to represent a message box
+    # This is a hard way to represent a message box: hard
     def button_clicked_hard(self):
 
         """
@@ -73,17 +73,66 @@ class Widget(QWidget):
         else:
             print("Cancel")
 
+    # This is an easy way to represent a message box: critical
     def button_clicked_critical(self):
-        pass
+        ret = QMessageBox.critical(
+            self, 
+            "Message title", 
+            "Critical warning!", 
+            QMessageBox.Ok|QMessageBox.Cancel,
+        )
 
+        if ret == QMessageBox.Ok:
+            print("Ok")
+        else:
+            print("Cancel")
+
+    # Question
     def button_clicked_question(self):
-        pass
+        ret = QMessageBox.question(
+            self, 
+            "Message title", 
+            "Asking a question?", 
+            QMessageBox.Ok|QMessageBox.Cancel,
+        )
 
+        if ret == QMessageBox.Ok:
+            print("Ok")
+        else:
+            print("Cancel")
+
+    #Information
     def button_clicked_information(self):
-        pass
+        ret = QMessageBox.information(
+            self, 
+            "Message title", 
+            "Some information.", 
+            QMessageBox.Ok|QMessageBox.Cancel,
+        )
 
+        if ret == QMessageBox.Ok:
+            print("Ok")
+        else:
+            print("Cancel")
+
+    # Warning
     def button_clicked_warning(self):
-        pass
+        ret = QMessageBox.warning(
+            self, 
+            "Message title", 
+            "Some warning!", 
+            QMessageBox.Ok|QMessageBox.Cancel,
+        )
 
+        if ret == QMessageBox.Ok:
+            print("Ok")
+        else:
+            print("Cancel")
+
+    # About
     def button_clicked_about(self):
-        pass
+        QMessageBox.about(
+            self, 
+            "Message title", 
+            "Some about message.",
+        )
