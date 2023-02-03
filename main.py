@@ -4,13 +4,13 @@ from PySide6.QtWidgets import QApplication
 #The sys module is responsible for processing commmand line arguments
 import sys
 
-from widget_line_edit import WidgetLineEdit
+from widget_text_edit import WidgetTextEdit
 
 # This element is a wrapper for all application widgets and interections
 app = QApplication(sys.argv)
 
 # Creating the main window of the application
-window = WidgetLineEdit()
+window = WidgetTextEdit()
 
 # Showing the window because it's hidden by default
 window.show()
