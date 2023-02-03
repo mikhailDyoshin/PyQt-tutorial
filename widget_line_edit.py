@@ -19,10 +19,16 @@ class WidgetLineEdit(QWidget):
         self.line_edit.textChanged.connect(self.text_changed)
 
         # Triggering cursor_changed method when cursor in the line-edit widget moves
-        self.line_edit.cursorPositionChanged.connect(self.cursor_changed)
+        # self.line_edit.cursorPositionChanged.connect(self.cursor_changed)
 
         # Triggering editing_finished method when editing in the line-edit widget is finished
         self.line_edit.editingFinished.connect(self.editing_finished)
+
+        # Triggering selection_changed method when some text in line-edit widget is selected
+        # self.line_edit.selectionChanged.connect(self.selection_changed)
+
+        # Triggering text_edited method when some text in line-edit widget is edited
+        self.line_edit.textEdited.connect(self.text_edited)
 
         """ Button """
         # Creating a button
@@ -81,3 +87,17 @@ class WidgetLineEdit(QWidget):
             in line-edit widget is finished. 
         """
         print("Editing finished")
+
+    def selection_changed(self):
+        """
+            Prints currently selected text
+            in the line-edit widget.
+        """
+        print("Selected text: ", self.line_edit.selectedText())
+
+    def text_edited(self, new_text):
+        """
+            Prints new edited text
+            of the line-edit widget.
+        """
+        print("New text: ", new_text)
